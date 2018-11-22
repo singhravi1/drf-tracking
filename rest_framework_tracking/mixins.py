@@ -1,3 +1,5 @@
+import json
+
 from .base_mixins import BaseLoggingMixin
 from .models import APIRequestLog
 
@@ -9,6 +11,10 @@ class LoggingMixin(BaseLoggingMixin):
 
         Defaults on saving the data on the db.
         """
+        try:
+            self.log['status_code'] = json.loads(self.log['response'])['status']['code']
+        except:
+            pass
         APIRequestLog(**self.log).save()
 
 
