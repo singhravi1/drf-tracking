@@ -16,7 +16,7 @@ class BaseLoggingMixin(object):
 
     CLEANED_SUBSTITUTE = '********************'
 
-    logging_methods = '__all__'
+    logging_methods = ['PUT', 'POST', 'DELETE']
     sensitive_fields = {}
 
     def __init__(self, *args, **kwargs):
